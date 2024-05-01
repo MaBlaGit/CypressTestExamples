@@ -1,0 +1,15 @@
+{
+  "name": "cypresstestexamples",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "cy:run-all": "npx cypress run --browser chrome"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^13.8.1",
+    "typescript": "^5.4.5"
+  }
+}
