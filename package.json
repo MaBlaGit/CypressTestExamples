@@ -4,12 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "cy:run-all": "npx cypress run --browser chrome"
+    "cy:all": "npx cypress run --browser chrome"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "cypress": "^13.8.1",
     "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "cypress-real-events": "^1.12.0"
   }
 }

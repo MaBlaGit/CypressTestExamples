@@ -23,3 +23,17 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+import { LoginPage } from "@root/pages/login.page";
+import { AccountPage } from "@root/pages/account.page";
+
+const loginPage = new LoginPage();
+const accountPage = new AccountPage();
+
+Cypress.Commands.add('logUser', (userEmail: string, password: string) => {
+    cy.session([userEmail, password], () => {
+        const accountButtonName = 'My Account';
+        loginPage.navigateTo();
+        loginPage.logUser(userEmail, password);
+        accountPage.myAccountNavButton.should('contain.text', accountButtonName);
+    });
+});
