@@ -1,1 +1,1 @@
-export const products = ['iPhone', 'Samsung', 'Sony']
+export const products = ['iPhone', 'Samsung', 'Sony'];
