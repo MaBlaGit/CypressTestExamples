@@ -1,4 +1,4 @@
-import { BasePage } from "@root/pages/base.page";
+import { BasePage } from '@root/pages/base.page';
 import { HeaderPage } from '@root/components/header.component';
 
 export class LoginPage extends BasePage {

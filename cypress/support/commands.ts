@@ -23,11 +23,13 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-import { LoginPage } from "@root/pages/login.page";
 import { AccountPage } from "@root/pages/account.page";
+import { LoginPage } from "@root/pages/login.page";
+import { ShoppingCartPage } from "@root/pages/shopping-cart.page";
 
-const loginPage = new LoginPage();
 const accountPage = new AccountPage();
+const loginPage = new LoginPage();
+const shoppingCartPage = new ShoppingCartPage();
 
 Cypress.Commands.add('logUser', (userEmail: string, password: string) => {
     cy.session([userEmail, password], () => {
@@ -35,5 +37,16 @@ Cypress.Commands.add('logUser', (userEmail: string, password: string) => {
         loginPage.navigateTo();
         loginPage.logUser(userEmail, password);
         accountPage.myAccountNavButton.should('contain.text', accountButtonName);
+    });
+});
+
+Cypress.Commands.add('deleteAllProducts', () => {
+    const emptyCart = 'Your shopping cart is empty!'
+    shoppingCartPage.navigateTo();
+    shoppingCartPage.emptyCartMessage.then(message => {
+        if(!message.text().includes(emptyCart)){
+            shoppingCartPage.clickOnRemoveAllCartProducts();
+            shoppingCartPage.emptyCartMessage.should('contain.text', emptyCart);
+        }
     });
 });
