@@ -50,3 +50,9 @@ Cypress.Commands.add('deleteAllProducts', () => {
         }
     });
 });
+
+Cypress.Commands.add('countCartProducts', () => {
+    return shoppingCartPage.tableRows.then(products => {
+        return products.length;
+    })
+})

@@ -1,5 +1,5 @@
-import { MainPage } from "@root/pages/main.page";
-import { products } from "@root/test-data//products.data";
+import { MainPage } from '@root/pages/main.page';
+import { products } from '@root/cypress/fixtures/test-data/products.data';
 
 describe('Search products tests', () => {
 

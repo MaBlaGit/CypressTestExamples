@@ -4,6 +4,7 @@ import { MainPage } from '@root/pages/main.page';
 import { ProductsPage } from '@root/pages/products.page';
 import { ShoppingCartPage } from '@root/pages/shopping-cart.page';
 import { SuccessPage } from '@root/pages/success.page';
+import { products } from '@root/cypress/fixtures/test-data/products.data';
 
 
 describe('Search and buy products as authorized user', () => {
@@ -53,4 +54,25 @@ describe('Search and buy products as authorized user', () => {
         successPage.clickOnContinueButton();
         mainPage.shopNowButton.should('contain.text', shopNow);
     });
+
+    it('should be able to buy more than one product', () => {
+        const resultListIndex = 0;
+        const productQuantity = 1;
+        const productsInTheCart = products.length;
+
+        for( const product of products) {
+            mainPage.headerComponent.hoverMyAccountButton();
+            mainPage.headerComponent.searchProductByName(product);
+            mainPage.headerComponent.clickOnSearchButton();
+            productsPage.addProductToCartAtPosition(resultListIndex);
+            productsPage.clickOnViewCartButton();
+            shoppingCartPage.findProductName(product).should('contain.text', product);
+            shoppingCartPage.getProductQuantityByName(product).should('have.value', productQuantity);
+            cy.countCartProducts().then(cartProducts => {
+                cartProducts === productsInTheCart ? 
+                    shoppingCartPage.clickOnCheckoutButton() : shoppingCartPage.clickOnContinueShoppingButton();
+            });
+        }
+
+    })
 })

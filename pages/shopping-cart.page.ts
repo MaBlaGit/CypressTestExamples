@@ -3,6 +3,10 @@ import { BasePage } from '@root/pages/base.page';
 export class ShoppingCartPage extends BasePage {
     url = '/index.php?route=checkout/cart';
 
+    get tableRows() {
+        return cy.get('.table-responsive .table-bordered tbody tr');
+    }
+
     get productDetailsTable() {
         return cy.get('.table-responsive .table-bordered');
     }
@@ -19,6 +23,10 @@ export class ShoppingCartPage extends BasePage {
         return cy.get('.buttons a[href*="/checkout"]');
     }
 
+    get continueShoppingButton() {
+        return cy.get('.buttons a[href*="/home"]');
+    }
+
     get checkoutButton() {
         return cy.get('.buttons a[href*="/checkout"]');
     }
@@ -28,7 +36,9 @@ export class ShoppingCartPage extends BasePage {
     }
 
     clickOnRemoveAllCartProducts() {
-        this.removeProductsButton.click();
+        this.removeProductsButton.each(button => {
+            cy.wrap(button).click();
+        })
     }
 
     getProductQuantityByName(productName: string) {
@@ -36,6 +46,10 @@ export class ShoppingCartPage extends BasePage {
                                         .parent()
                                         .parent()
                                         .find('input[name*="quantity"]');
+    }
+
+    clickOnContinueShoppingButton(){
+        this.continueShoppingButton.click();
     }
 
     clickOnCheckoutButton() {
