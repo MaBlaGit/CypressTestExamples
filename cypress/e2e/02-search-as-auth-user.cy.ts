@@ -8,6 +8,12 @@ import { products } from '@root/cypress/fixtures/test-data/products.data';
 
 
 describe('Search and buy products as authorized user', () => {
+    const shopNow = 'SHOP NOW';
+    const searchedProduct = 'Samsung';
+    const resultListIndex = 0;
+    const productQuantity = 1;
+    const successText = ' Your order has been placed!';
+    
     let checkoutPage: CheckoutPage;
     let confirmOrderPage: ConfirmOrderPage;
     let mainPage: MainPage;
@@ -29,12 +35,6 @@ describe('Search and buy products as authorized user', () => {
     });
 
     it('should be able to buy selected product as logged user', () => {
-        const shopNow = 'SHOP NOW';
-        const searchedProduct = 'Samsung';
-        const resultListIndex = 0;
-        const productQuantity = 1;
-        const successText = ' Your order has been placed!';
-
         mainPage.headerComponent.hoverMyAccountButton();
         mainPage.headerComponent.searchProductByName(searchedProduct);
         mainPage.headerComponent.clickOnSearchButton();
@@ -56,8 +56,6 @@ describe('Search and buy products as authorized user', () => {
     });
 
     it('should be able to buy more than one product', () => {
-        const resultListIndex = 0;
-        const productQuantity = 1;
         const productsInTheCart = products.length;
 
         for( const product of products) {
@@ -73,6 +71,21 @@ describe('Search and buy products as authorized user', () => {
                     shoppingCartPage.clickOnCheckoutButton() : shoppingCartPage.clickOnContinueShoppingButton();
             });
         }
-
-    })
-})
+        // create method in page object
+        products.forEach(product => {
+            checkoutPage.findProductByName(product).should('contain.text', product);
+            checkoutPage.getProductQuantityByName(product).should('have.value', productQuantity);
+        });
+        checkoutPage.checkTermsAndConditions();
+        checkoutPage.clickOnContinueButton();
+        // create method in page object
+        products.forEach(product => {
+            confirmOrderPage.findProductsByName(product);
+            confirmOrderPage.getProductQuantityByName(product).should('contain', productQuantity);
+        });
+        confirmOrderPage.clickOnConfirmOrderButton();
+        successPage.successMessage.should('contain.text', successText);
+        successPage.clickOnContinueButton();
+        mainPage.shopNowButton.should('contain.text', shopNow);
+    });
+});
