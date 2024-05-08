@@ -1,7 +1,6 @@
 import { BasePage } from '@root/pages/base.page';
 
 export class ProductsPage extends BasePage {
-    
     url = '/index.php?route=product%2Fsearch&search=';
 
     get productsList() {

@@ -47,7 +47,7 @@ describe('Search and buy products as authorized user', () => {
         checkoutPage.getProductQuantityByName(searchedProduct).should('have.value', productQuantity);
         checkoutPage.checkTermsAndConditions();
         checkoutPage.clickOnContinueButton();
-        confirmOrderPage.findProductsByName(searchedProduct);
+        confirmOrderPage.findProductByName(searchedProduct);
         confirmOrderPage.getProductQuantityByName(searchedProduct).should('contain', productQuantity);
         confirmOrderPage.clickOnConfirmOrderButton();
         successPage.successMessage.should('contain.text', successText);
@@ -71,18 +71,10 @@ describe('Search and buy products as authorized user', () => {
                     shoppingCartPage.clickOnCheckoutButton() : shoppingCartPage.clickOnContinueShoppingButton();
             });
         }
-        // create method in page object
-        products.forEach(product => {
-            checkoutPage.findProductByName(product).should('contain.text', product);
-            checkoutPage.getProductQuantityByName(product).should('have.value', productQuantity);
-        });
+        checkoutPage.assertCheckoutPageProducts(products, productQuantity);
         checkoutPage.checkTermsAndConditions();
         checkoutPage.clickOnContinueButton();
-        // create method in page object
-        products.forEach(product => {
-            confirmOrderPage.findProductsByName(product);
-            confirmOrderPage.getProductQuantityByName(product).should('contain', productQuantity);
-        });
+        confirmOrderPage.assertConfirmationOrderPageProducts(products, productQuantity);
         confirmOrderPage.clickOnConfirmOrderButton();
         successPage.successMessage.should('contain.text', successText);
         successPage.clickOnContinueButton();

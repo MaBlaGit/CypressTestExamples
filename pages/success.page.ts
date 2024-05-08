@@ -1,6 +1,6 @@
 import { BasePage } from '@root/pages/base.page';
 
-export class SuccessPage extends BasePage{
+export class SuccessPage extends BasePage {
     get successMessage(){
         return cy.contains('Your order has been placed!');
     }

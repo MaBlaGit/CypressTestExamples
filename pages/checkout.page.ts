@@ -46,6 +46,13 @@ export class CheckoutPage extends BasePage {
                                         .find('input[id*="quantity"]');
     }
 
+    assertCheckoutPageProducts(listOfProducts: string[], productQuantity: number) {
+        listOfProducts.forEach(product => {
+          this.findProductByName(product).should('contain', product);
+          this.getProductQuantityByName(product).should('have.value', productQuantity);
+        });
+      }
+
     fillBillingAddress(firstName: string, 
         lastName: string, 
         address: string, 

@@ -1,3 +1,6 @@
+import { CheckoutPage } from "./checkout.page";
+import { ConfirmOrderPage } from "./confirm-order.page";
+
 export class BasePage {
     protected url = '';
 
