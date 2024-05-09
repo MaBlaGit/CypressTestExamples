@@ -34,7 +34,7 @@ describe('Search and buy products as authorized user', () => {
         mainPage.navigateTo();
     });
 
-    it('should be able to buy selected product as logged user', () => {
+    it('should be able to buy selected product', () => {
         mainPage.headerComponent.hoverMyAccountButton();
         mainPage.headerComponent.searchProductByName(searchedProduct);
         mainPage.headerComponent.clickOnSearchButton();
