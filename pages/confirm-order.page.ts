@@ -1,4 +1,5 @@
 import { BasePage } from '@root/pages/base.page';
+import { Product } from '@root/cypress/support/typings/typings';
 
 export class ConfirmOrderPage extends BasePage {
     static pageName = 'ConfirmOrderPage';
@@ -20,14 +21,14 @@ export class ConfirmOrderPage extends BasePage {
         return this.productOrderTable.contains(productName).next().next();
     }
 
-    assertConfirmationOrderPageProducts(listOfProducts: string[], productQuantity: number) {
+    assertConfirmationOrderPageProducts(listOfProducts: Product[], productQuantity: number) {
         listOfProducts.forEach(product => {
-          this.findProductByName(product).should('contain', product);
-          this.getProductQuantityByName(product).should('contain', productQuantity);
+          this.findProductByName(product.name).should('contain', product.name);
+          this.getProductQuantityByName(product.name).should('contain', productQuantity);
         });
       }
 
-    clickOnConfirmOrderButton(){
+    clickOnConfirmOrderButton() {
         this.confirmOrderButton.click();
     }
 }

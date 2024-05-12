@@ -1,4 +1,5 @@
 import { BasePage } from '@root/pages/base.page';
+import { Product } from '@root/cypress/support/typings/typings';
 
 export class CheckoutPage extends BasePage {
     url = '/index.php?route=checkout/checkout';
@@ -46,10 +47,10 @@ export class CheckoutPage extends BasePage {
                                         .find('input[id*="quantity"]');
     }
 
-    assertCheckoutPageProducts(listOfProducts: string[], productQuantity: number) {
+    assertCheckoutPageProducts(listOfProducts: Product[], productQuantity: number) {
         listOfProducts.forEach(product => {
-          this.findProductByName(product).should('contain', product);
-          this.getProductQuantityByName(product).should('have.value', productQuantity);
+          this.findProductByName(product.name).should('contain', product.name);
+          this.getProductQuantityByName(product.name).should('have.value', productQuantity);
         });
       }
 

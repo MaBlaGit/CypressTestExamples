@@ -12,6 +12,8 @@ describe('Search and buy products as authorized user', () => {
     const searchedProduct = 'Samsung';
     const resultListIndex = 0;
     const productQuantity = 1;
+    const initialCartItems = 0;
+
     const successText = ' Your order has been placed!';
     
     let checkoutPage: CheckoutPage;
@@ -35,10 +37,14 @@ describe('Search and buy products as authorized user', () => {
     });
 
     it('should be able to buy selected product', () => {
+        const numberProductsToBuy = 1;
+
+        mainPage.headerComponent.catItemTotal.should('have.text', initialCartItems);
         mainPage.headerComponent.hoverMyAccountButton();
         mainPage.headerComponent.searchProductByName(searchedProduct);
         mainPage.headerComponent.clickOnSearchButton();
         productsPage.addProductToCartAtPosition(resultListIndex);
+        mainPage.headerComponent.catItemTotal.should('have.text', numberProductsToBuy);
         productsPage.clickOnViewCartButton();
         shoppingCartPage.findProductName(searchedProduct).should('contain.text', searchedProduct);
         shoppingCartPage.getProductQuantityByName(searchedProduct).should('have.value', productQuantity);
@@ -57,15 +63,17 @@ describe('Search and buy products as authorized user', () => {
 
     it('should be able to buy more than one product', () => {
         const productsInTheCart = products.length;
-
+    
+        mainPage.headerComponent.catItemTotal.should('have.text', initialCartItems);
         for( const product of products) {
             mainPage.headerComponent.hoverMyAccountButton();
-            mainPage.headerComponent.searchProductByName(product);
+            mainPage.headerComponent.searchProductByName(product.name);
             mainPage.headerComponent.clickOnSearchButton();
             productsPage.addProductToCartAtPosition(resultListIndex);
+            mainPage.headerComponent.catItemTotal.should('have.text', product.inCartAfter);
             productsPage.clickOnViewCartButton();
-            shoppingCartPage.findProductName(product).should('contain.text', product);
-            shoppingCartPage.getProductQuantityByName(product).should('have.value', productQuantity);
+            shoppingCartPage.findProductName(product.name).should('contain.text', product.name);
+            shoppingCartPage.getProductQuantityByName(product.name).should('have.value', productQuantity);
             cy.countCartProducts().then(cartProducts => {
                 cartProducts === productsInTheCart ? 
                     shoppingCartPage.clickOnCheckoutButton() : shoppingCartPage.clickOnContinueShoppingButton();

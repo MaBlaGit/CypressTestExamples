@@ -1,5 +1,9 @@
 export class HeaderPage {
 
+    get catItemTotal(){
+        return cy.get('[data-toggle="sticky"] .cart-item-total');
+    }
+
     get mainSearch() {
         return cy.get('#main-header').get('#search');
     }
