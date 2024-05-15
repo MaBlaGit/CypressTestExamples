@@ -12,7 +12,7 @@ describe('Search products tests', () => {
 
   for(const product of products) {
     it(`should be able to search ${product} products`, () => {
-      mainPage.headerComponent.searchProductByName(product);
+      mainPage.headerComponent.searchProductByName(product.name);
       mainPage.headerComponent.clickOnSearchButton();
       mainPage.searchedElements.each(product => {
         expect(product).to.contains(product);
