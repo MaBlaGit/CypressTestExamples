@@ -9,12 +9,12 @@ import { products } from '@root/cypress/fixtures/test-data/products.data';
 
 describe('Search and buy products as authorized user', () => {
     const shopNow = 'SHOP NOW';
-    const searchedProduct = 'Samsung';
+    const searchedProduct = 'HTC Touch HD';
     const resultListIndex = 0;
     const productQuantity = 1;
     const initialCartItems = 0;
 
-    const successText = ' Your order has been placed!';
+    const successText = 'Your order has been placed!';
     
     let checkoutPage: CheckoutPage;
     let confirmOrderPage: ConfirmOrderPage;

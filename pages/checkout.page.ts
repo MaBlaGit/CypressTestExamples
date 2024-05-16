@@ -113,6 +113,6 @@ export class CheckoutPage extends BasePage {
     }
 
     clickOnContinueButton(){
-        this.continueButton.click();
+        this.continueButton.invoke('click');
     }
 }
