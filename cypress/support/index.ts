@@ -7,6 +7,8 @@ declare global {
          */
         dataCy(value: string): Chainable<JQuery<HTMLElement>>
         logUser(userEmail: string, password: string): void;
+        deleteAllProducts(): void;
+        countCartProducts(): Chainable<number>;
       }
     }
   }
