@@ -12,6 +12,10 @@ export class HeaderPage {
         return cy.get('#main-header').get('#search').find('button[type="submit"]');
     }
 
+    get shopByCategory() {
+        return cy.get('#main-navigation div[class*="shop-by-category"] a');
+    }
+
     get myAccountButton(){
         return cy.get('ul[class*="horizontal"]').find('a[href*="route=account/account"]');
     }
@@ -26,5 +30,9 @@ export class HeaderPage {
 
     hoverMyAccountButton(){
         this.myAccountButton.realHover();
+    }
+
+    clickOnShopByCategory(){
+        this.shopByCategory.click();
     }
 }
