@@ -16,6 +16,10 @@ export class HeaderPage {
         return cy.get('#main-navigation div[class*="shop-by-category"] a');
     }
 
+    get navCategories(){
+        return cy.get('div[data-position="left"] ul[class="navbar-nav vertical"]');
+    }
+
     get myAccountButton(){
         return cy.get('ul[class*="horizontal"]').find('a[href*="route=account/account"]');
     }
@@ -34,5 +38,9 @@ export class HeaderPage {
 
     clickOnShopByCategory(){
         this.shopByCategory.click();
+    }
+
+    selectCategory(categoryName: string) {
+        this.navCategories.contains(categoryName).click()
     }
 }
