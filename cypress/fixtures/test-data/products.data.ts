@@ -8,18 +8,11 @@ export const products: Product[] = [
 export const navigationCategories = [
     'Components',
     'Cameras',
-    'Phone, Tablets & Ipod',
+    'Tablets',
     'Software',
     'MP3 Players',
-    'Laptops & Notebooks',
-    'Desktops & Monitors',
-    'Printers & Scanners',
-    'Mice ans Trackballs',
-    'Fashion and Accessories',
-    'Beauty and Saloon',
-    'Autoparts and Accessories',
-    'Washing machine',
-    'Gaming consoles',
-    'Air conditioner',
-    'Web Cameras'
+    'Laptops',
+    'Monitors',
+    'Printers',
+    'Mice and Trackballs'
 ];
