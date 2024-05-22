@@ -12,6 +12,10 @@ export class HeaderPage {
         return cy.get('#main-header').get('#search').find('button[type="submit"]');
     }
 
+    get compareButton(){
+        return cy.get('a[aria-label="Compare"]');
+    }
+
     get shopByCategory() {
         return cy.get('#main-navigation div[class*="shop-by-category"] a');
     }
@@ -30,6 +34,10 @@ export class HeaderPage {
 
     clickOnSearchButton(){
         this.searchButton.click();
+    }
+
+    clickOnCompareButton(){
+        this.compareButton.click();
     }
 
     hoverMyAccountButton(){
