@@ -3,8 +3,8 @@ name: CypressTestExamples
 on: [pull_request, workflow_dispatch]
 
 env:
-    USER_EMAIL: ${{ secrets.USER_EMAIL }}
-    PASSWORD: ${{ secrets.PASSWORD }}
+    CYPRESS_USER_EMAIL: ${{ secrets.USER_EMAIL }}
+    CYPRESS_PASSWORD: ${{ secrets.PASSWORD }}
 
 jobs:
   cypress-test-examples:
