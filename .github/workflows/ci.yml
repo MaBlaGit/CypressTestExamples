@@ -1,0 +1,33 @@
+name: CypressTestExamples
+
+on: [pull_request, workflow_dispatch]
+
+env:
+    USER_EMAIL: ${{ secrets.USER_EMAIL }}
+    PASSWORD: ${{ secrets.PASSWORD }}
+
+jobs:
+  cypress-test-examples:
+    runs-on: ubuntu-latest
+    container: cypress/browsers:node-20.13.0-chrome-124.0.6367.155-1-ff-125.0.3-edge-124.0.2478.80-1
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: CypressTestExamplesRun
+        uses: cypress-io/github-action@v4
+        with:
+          browser: chrome
+          config-file: cypress.config.ts
+          command: npm run cy:all
+      - name: Archive videos artifacts
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: cypress-videos
+          path: ./videos
+      - name: Archive screenshots artifacts
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: ./screenshots

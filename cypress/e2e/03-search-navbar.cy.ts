@@ -10,7 +10,7 @@ describe('Navbar product search tests', () => {
         mainPage = new MainPage();
         productsPage = new ProductsPage();
 
-        cy.logUser(Cypress.env("userEmail"), Cypress.env("password"));
+        cy.logUser(Cypress.env("USER_EMAIL"), Cypress.env("PASSWORD"));
         cy.deleteAllProducts();
         mainPage.navigateTo();
     });
