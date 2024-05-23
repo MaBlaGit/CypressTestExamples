@@ -12,6 +12,18 @@ export class HeaderPage {
         return cy.get('#main-header').get('#search').find('button[type="submit"]');
     }
 
+    get compareButton(){
+        return cy.get('a[aria-label="Compare"]');
+    }
+
+    get shopByCategory() {
+        return cy.get('#main-navigation div[class*="shop-by-category"] a');
+    }
+
+    get navCategories(){
+        return cy.get('div[data-position="left"] ul[class="navbar-nav vertical"]');
+    }
+
     get myAccountButton(){
         return cy.get('ul[class*="horizontal"]').find('a[href*="route=account/account"]');
     }
@@ -24,7 +36,19 @@ export class HeaderPage {
         this.searchButton.click();
     }
 
+    clickOnCompareButton(){
+        this.compareButton.click();
+    }
+
     hoverMyAccountButton(){
         this.myAccountButton.realHover();
+    }
+
+    clickOnShopByCategory(){
+        this.shopByCategory.click();
+    }
+
+    selectCategory(categoryName: string) {
+        this.navCategories.contains(categoryName).click()
     }
 }
