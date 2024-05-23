@@ -32,13 +32,16 @@ npm install
 }
 ```
 
-- open cypress dashboard ans select desired spec by hand:
+And that's it. Right now you have two options:
+
+
+1. Open Cypress dashboard and select desired spec by hand:
 
 ```
 npx cypress open
 ```
 
-- run all test suites in headless mode
+2. Run all test suites in headless mode
 
 ```
 npm run cy:all
