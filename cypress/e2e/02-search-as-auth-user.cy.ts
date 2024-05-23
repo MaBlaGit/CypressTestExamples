@@ -31,7 +31,7 @@ describe('Search and buy products as authorized user', () => {
         shoppingCartPage = new ShoppingCartPage();
         successPage = new SuccessPage();
 
-        cy.logUser(Cypress.env("userEmail"), Cypress.env("password"));
+        cy.logUser(Cypress.env("USER_EMAIL"), Cypress.env("PASSWORD"));
         cy.deleteAllProducts();
         mainPage.navigateTo();
     });
