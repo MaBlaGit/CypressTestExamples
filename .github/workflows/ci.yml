@@ -1,6 +1,11 @@
 name: CypressTestExamples
 
-on: [pull_request, workflow_dispatch]
+on:
+    pull_request:
+    workflow_dispatch:
+    push:
+      branches:
+        - main
 
 env:
     CYPRESS_USER_EMAIL: ${{ secrets.USER_EMAIL }}
