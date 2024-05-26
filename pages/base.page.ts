@@ -1,8 +1,9 @@
-import { CheckoutPage } from "./checkout.page";
-import { ConfirmOrderPage } from "./confirm-order.page";
-
 export class BasePage {
     protected url = '';
+
+    get notificationToast(){
+        return cy.get('#notification-box-top');
+    }
 
     get toastBodyViewCartButton(){
         return cy.get('.toast-body').contains('View Cart');

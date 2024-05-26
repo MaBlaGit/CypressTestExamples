@@ -28,18 +28,19 @@ describe('Search products tests', () => {
   it(`should be able to search and buy product as 'guest user'`, () => {
     const shopNow = 'SHOP NOW';
     const productToBuy = 'MacBook Pro';
+    const productAction = 'Add to Cart';
+    const logAsGuest = 'guest';
+    const successText = ' Your order has been placed!';
     const resultListIndex = 0;
     const numberProductsToBuy = 1;
     const productQuantity = 1;
-    const logAsGuest = 'guest';
-    const successText = ' Your order has been placed!';
 
     mainPage.headerComponent.searchProductByName(productToBuy);
     mainPage.headerComponent.clickOnSearchButton();
     mainPage.searchedElements.each(product => {
       expect(product).to.contains(product);
     });
-    productsPage.addProductToCartAtPosition(resultListIndex);
+    productsPage.performActionOnSelectedProduct(productAction, resultListIndex);
     mainPage.headerComponent.catItemTotal.should('have.text', numberProductsToBuy);
     productsPage.clickOnViewCartButton();
     shoppingCartPage.findProductName(productToBuy).should('contain.text', productToBuy);
