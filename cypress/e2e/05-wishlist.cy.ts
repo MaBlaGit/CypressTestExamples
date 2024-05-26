@@ -1,13 +1,12 @@
 import { MainPage } from '@root/pages/main.page';
 import { ProductsPage } from '@root/pages/products.page';
+import { WishlistPage } from '@root/pages/wishlist.page';
 
 describe('Wishlist feature tests', () => {
 
-  let mainPage:MainPage;
-  let productsPage: ProductsPage;
-
-  mainPage = new MainPage();
-  productsPage = new ProductsPage();
+  let mainPage = new MainPage();
+  let productsPage = new ProductsPage();
+  let wishlistPage = new WishlistPage();
 
   const initialCartItems = 0;
   const searchedProduct = 'MacBook Pro';
@@ -34,7 +33,7 @@ describe('Wishlist feature tests', () => {
 
     beforeEach(() => {
       cy.logUser(Cypress.env("USER_EMAIL"), Cypress.env("PASSWORD"));
-      cy.deleteAllProducts();
+      cy.removeAllWishlist();
       mainPage.navigateTo();
     });
 
@@ -44,6 +43,8 @@ describe('Wishlist feature tests', () => {
       mainPage.headerComponent.clickOnSearchButton();
       productsPage.performActionOnSelectedProduct(productAction, initialCartItems);
       productsPage.notificationToast.should('contain.text', notificationToastSuccess);
+      productsPage.headerComponent.clickOnWishlistButton();
+      wishlistPage.wishlistTable.should('contain.text', searchedProduct);
     });
   });
 });

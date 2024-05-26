@@ -16,6 +16,10 @@ export class HeaderPage {
         return cy.get('a[aria-label="Compare"]');
     }
 
+    get wishlistButton(){
+        return cy.get('div a[aria-label="Wishlist"]');
+    }
+
     get shopByCategory() {
         return cy.get('#main-navigation div[class*="shop-by-category"] a');
     }
@@ -38,6 +42,10 @@ export class HeaderPage {
 
     clickOnCompareButton(){
         this.compareButton.click();
+    }
+
+    clickOnWishlistButton(){
+        this.wishlistButton.click();
     }
 
     hoverMyAccountButton(){
