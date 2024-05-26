@@ -18,6 +18,7 @@ describe('Compare products test', () => {
   it(`should be able to compare two products`, () => {
     const productToCompare = 'MacBook Pro';
     const comparisonPageHeader = 'Product Comparison';
+    const productAction = 'Compare this Product';
     const firstProductIndex = 0;
     const secondProductIndex = 1;
 
@@ -26,8 +27,8 @@ describe('Compare products test', () => {
     mainPage.searchedElements.each(product => {
       expect(product).to.contains(product);
     });
-    productsPage.addProductToCompareAtPosition(firstProductIndex);
-    productsPage.addProductToCompareAtPosition(secondProductIndex);
+    productsPage.performActionOnSelectedProduct(productAction, firstProductIndex);
+    productsPage.performActionOnSelectedProduct(productAction, secondProductIndex);
     productsPage.headerComponent.clickOnCompareButton();
     productComparisonPage.pageHeader.should('have.text', comparisonPageHeader);
     productComparisonPage.comparedProduct.should('have.length', 2);

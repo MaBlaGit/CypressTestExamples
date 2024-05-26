@@ -10,6 +10,7 @@ import { products } from '@root/cypress/fixtures/test-data/products.data';
 describe('Search and buy products as authorized user', () => {
     const shopNow = 'SHOP NOW';
     const searchedProduct = 'HTC Touch HD';
+    const productAction = 'Add to Cart';
     const resultListIndex = 0;
     const productQuantity = 1;
     const initialCartItems = 0;
@@ -43,7 +44,7 @@ describe('Search and buy products as authorized user', () => {
         mainPage.headerComponent.hoverMyAccountButton();
         mainPage.headerComponent.searchProductByName(searchedProduct);
         mainPage.headerComponent.clickOnSearchButton();
-        productsPage.addProductToCartAtPosition(resultListIndex);
+        productsPage.performActionOnSelectedProduct(productAction, resultListIndex);
         mainPage.headerComponent.catItemTotal.should('have.text', numberProductsToBuy);
         productsPage.clickOnViewCartButton();
         shoppingCartPage.findProductName(searchedProduct).should('contain.text', searchedProduct);
@@ -69,7 +70,7 @@ describe('Search and buy products as authorized user', () => {
             mainPage.headerComponent.hoverMyAccountButton();
             mainPage.headerComponent.searchProductByName(product.name);
             mainPage.headerComponent.clickOnSearchButton();
-            productsPage.addProductToCartAtPosition(resultListIndex);
+            productsPage.performActionOnSelectedProduct(productAction, resultListIndex);
             mainPage.headerComponent.catItemTotal.should('have.text', product.inCartAfter);
             productsPage.clickOnViewCartButton();
             shoppingCartPage.findProductName(product.name).should('contain.text', product.name);

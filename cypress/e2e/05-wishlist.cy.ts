@@ -6,13 +6,44 @@ describe('Wishlist feature tests', () => {
   let mainPage:MainPage;
   let productsPage: ProductsPage;
 
-  beforeEach(() => {
-    mainPage = new MainPage();
-    productsPage = new ProductsPage();
-    mainPage.navigateTo();
+  mainPage = new MainPage();
+  productsPage = new ProductsPage();
+
+  const initialCartItems = 0;
+  const searchedProduct = 'MacBook Pro';
+  const productAction = 'Add to Wish List';
+  const notificationToastFailure = 'You must login or create an account';
+  const notificationToastSuccess = 'Success: You have added MacBook Pro';
+
+  describe('Not logged user', () => {
+    
+    beforeEach(() => {
+      mainPage.navigateTo();
+    });
+
+    it('shouldn\'t be able add product to wishlist', () => {
+      mainPage.headerComponent.catItemTotal.should('have.text', initialCartItems);
+      mainPage.headerComponent.searchProductByName(searchedProduct);
+      mainPage.headerComponent.clickOnSearchButton();
+      productsPage.performActionOnSelectedProduct(productAction, initialCartItems);
+      productsPage.notificationToast.should('contain.text', notificationToastFailure);
+    });
   });
 
-  it(`should be able add products to the wishlist`, () => {
-    // TODO
+  describe('Logged user', () => {
+
+    beforeEach(() => {
+      cy.logUser(Cypress.env("USER_EMAIL"), Cypress.env("PASSWORD"));
+      cy.deleteAllProducts();
+      mainPage.navigateTo();
+    });
+
+    it('should be able add product to wishlist', () => {
+      mainPage.headerComponent.catItemTotal.should('have.text', initialCartItems);
+      mainPage.headerComponent.searchProductByName(searchedProduct);
+      mainPage.headerComponent.clickOnSearchButton();
+      productsPage.performActionOnSelectedProduct(productAction, initialCartItems);
+      productsPage.notificationToast.should('contain.text', notificationToastSuccess);
+    });
   });
 });
