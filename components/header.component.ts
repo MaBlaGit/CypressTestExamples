@@ -1,4 +1,4 @@
-export class HeaderPage {
+export class HeaderComponent {
 
     get catItemTotal(){
         return cy.get('[data-toggle="sticky"] .cart-item-total');

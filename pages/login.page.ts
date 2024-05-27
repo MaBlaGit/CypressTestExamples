@@ -1,10 +1,10 @@
 import { BasePage } from '@root/pages/base.page';
-import { HeaderPage } from '@root/components/header.component';
+import { HeaderComponent } from '@root/components/header.component';
 
 export class LoginPage extends BasePage {
     url = '/index.php?route=account/login';
 
-    headerComponent: HeaderPage = new HeaderPage();
+    headerComponent: HeaderComponent = new HeaderComponent();
 
     get emailAddressInput() {
         return cy.get('#input-email');

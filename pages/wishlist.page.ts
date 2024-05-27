@@ -1,10 +1,10 @@
 import { BasePage } from "@root/pages/base.page";
-import { HeaderPage } from '@root/components/header.component';
+import { HeaderComponent } from '@root/components/header.component';
 
 export class WishlistPage extends BasePage {
     url = '/index.php?route=account/wishlist';
 
-    headerComponent: HeaderPage = new HeaderPage();
+    headerComponent: HeaderComponent = new HeaderComponent();
 
     get wishlistTable(){
         return cy.get('#account-wishlist table');

@@ -1,11 +1,11 @@
 import { BasePage } from '@root/pages/base.page';
-import { HeaderPage } from '@root/components/header.component';
+import { HeaderComponent } from '@root/components/header.component';
 import { ProductAction } from '@root/cypress/support/typings/typings';
 
 export class ProductsPage extends BasePage {
     url = '/index.php?route=product%2Fsearch&search=';
 
-    headerComponent: HeaderPage = new HeaderPage();
+    headerComponent: HeaderComponent = new HeaderComponent();
 
     get productPageHeader(){
         return cy.get('div[class*="entry-content"] h1');
