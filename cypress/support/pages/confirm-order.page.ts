@@ -1,4 +1,4 @@
-import { BasePage } from '@root/pages/base.page';
+import { BasePage } from '@root/cypress/support/pages/base.page';
 import { Product } from '@root/cypress/support/typings/typings';
 
 export class ConfirmOrderPage extends BasePage {

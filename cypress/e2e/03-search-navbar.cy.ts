@@ -1,5 +1,5 @@
-import { MainPage } from '@root/pages/main.page';
-import { ProductsPage } from '@root/pages/products.page';
+import { MainPage } from '@root/cypress/support/pages/main.page';
+import { ProductsPage } from '@root/cypress/support/pages/products.page';
 import { navigationCategories } from '@root/cypress/fixtures/test-data/products.data';
 
 describe('Navbar product search tests', () => {

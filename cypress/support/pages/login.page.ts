@@ -1,5 +1,5 @@
-import { BasePage } from '@root/pages/base.page';
-import { HeaderComponent } from '@root/components/header.component';
+import { BasePage } from '@root/cypress/support/pages/base.page';
+import { HeaderComponent } from '@root/cypress/support/components/header.component';
 
 export class LoginPage extends BasePage {
     url = '/index.php?route=account/login';

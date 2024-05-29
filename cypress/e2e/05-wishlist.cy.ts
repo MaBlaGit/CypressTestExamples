@@ -1,6 +1,6 @@
-import { MainPage } from '@root/pages/main.page';
-import { ProductsPage } from '@root/pages/products.page';
-import { WishlistPage } from '@root/pages/wishlist.page';
+import { MainPage } from '@root/cypress/support/pages/main.page';
+import { ProductsPage } from '@root/cypress/support/pages/products.page';
+import { WishlistPage } from '@root/cypress/support/pages/wishlist.page';
 
 describe('Wishlist feature tests', () => {
 
