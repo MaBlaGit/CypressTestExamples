@@ -1,4 +1,4 @@
-import { BasePage } from '@root/pages/base.page';
+import { BasePage } from '@root/cypress/support/pages/base.page';
 
 export class SuccessPage extends BasePage {
     get successMessage(){

@@ -1,4 +1,4 @@
-import { BasePage } from "./base.page";
+import { BasePage } from "@root/cypress/support/pages/base.page";
 
 export class ProductComparisonPage extends BasePage {
     url = '/index.php?route=product/compare'

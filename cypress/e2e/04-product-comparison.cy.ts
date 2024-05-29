@@ -1,6 +1,6 @@
-import { MainPage } from '@root/pages/main.page';
-import { ProductsPage } from '@root/pages/products.page';
-import { ProductComparisonPage } from '@root/pages/product-comparison.page';
+import { MainPage } from '@root/cypress/support/pages/main.page';
+import { ProductsPage } from '@root/cypress/support/pages/products.page';
+import { ProductComparisonPage } from '@root/cypress/support/pages/product-comparison.page';
 
 describe('Compare products test', () => {
 

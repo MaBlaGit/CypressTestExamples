@@ -1,9 +1,9 @@
-import { CheckoutPage } from '@root/pages/checkout.page';
-import { ConfirmOrderPage } from '@root/pages/confirm-order.page';
-import { MainPage } from '@root/pages/main.page';
-import { ProductsPage } from '@root/pages/products.page';
-import { ShoppingCartPage } from '@root/pages/shopping-cart.page';
-import { SuccessPage } from '@root/pages/success.page';
+import { CheckoutPage } from '@root/cypress/support/pages/checkout.page';
+import { ConfirmOrderPage } from '@root/cypress/support/pages/confirm-order.page';
+import { MainPage } from '@root/cypress/support/pages/main.page';
+import { ProductsPage } from '@root/cypress/support/pages/products.page';
+import { ShoppingCartPage } from '@root/cypress/support/pages/shopping-cart.page';
+import { SuccessPage } from '@root/cypress/support/pages/success.page';
 import { products } from '@root/cypress/fixtures/test-data/products.data';
 
 
