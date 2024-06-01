@@ -27,7 +27,7 @@ describe('Search products tests', () => {
 
   it(`should be able to search and buy product as 'guest user'`, () => {
     const shopNow = 'SHOP NOW';
-    const productToBuy = 'MacBook Pro';
+    const productToBuy = 'MacBook Air';
     const productAction = 'Add to Cart';
     const logAsGuest = 'guest';
     const successText = ' Your order has been placed!';
