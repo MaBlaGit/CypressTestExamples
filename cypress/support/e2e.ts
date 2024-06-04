@@ -19,3 +19,5 @@ import "cypress-real-events";
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
+const registerCypressGrep = require('@cypress/grep');
+registerCypressGrep();

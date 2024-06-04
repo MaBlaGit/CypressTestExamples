@@ -7,7 +7,7 @@ module.exports = defineConfig({
   viewportHeight: 1080,
   e2e: {
     setupNodeEvents(on, config) {
-      // implement node event listeners here
+      require('@cypress/grep/src/plugin')(on, config);
     },
     baseUrl: 'https://ecommerce-playground.lambdatest.io',
   }
