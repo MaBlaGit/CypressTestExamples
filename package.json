@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "cy:all": "npx cypress run --browser chrome"
+    "cy:all": "npx cypress run --browser chrome",
+    "cy:regression": "npx cypress run --env grepTags=@regression"
   },
   "author": "",
   "license": "ISC",

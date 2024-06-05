@@ -14,7 +14,7 @@ describe('Wishlist feature tests', () => {
   const notificationToastFailure = 'You must login or create an account';
   const notificationToastSuccess = 'Success: You have added MacBook Pro';
 
-  describe('Not logged user', () => {
+  describe('Not logged user', { tags: '@regression' }, () => {
     
     beforeEach(() => {
       mainPage.navigateTo();
