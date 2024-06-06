@@ -4,11 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "cy:all": "npx cypress run --browser chrome"
+    "cy:all": "npx cypress run --browser chrome",
+    "cy:regression": "npx cypress run --env grepTags=@regression"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@cypress/grep": "^4.0.1",
     "cypress": "^13.10.0",
     "typescript": "^5.4.5"
   },
