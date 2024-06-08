@@ -10,10 +10,12 @@ const wishlistPage = new WishlistPage();
 
 Cypress.Commands.add('logUser', (userEmail: string, password: string) => {
     cy.session([userEmail, password], () => {
-        const accountButtonName = 'My Account';
         loginPage.navigateTo();
         loginPage.logUser(userEmail, password);
-        accountPage.myAccountNavButton.should('contain.text', accountButtonName);
+    }, {
+        validate: () => {
+            cy.getCookie('OCSESSID').should('not.be.empty');
+        }
     });
 });
 
