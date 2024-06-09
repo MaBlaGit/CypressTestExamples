@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "cy:all": "npx cypress run --browser chrome",
-    "cy:regression": "npx cypress run --env grepTags=@regression"
+    "cy:all": "npx cypress run --browser chrome --env tenant=production",
+    "cy:regression": "npx cypress run --env tenant=production,grepTags=@regression"
   },
   "author": "",
   "license": "ISC",
