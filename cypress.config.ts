@@ -12,7 +12,11 @@ module.exports = defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
       require('@cypress/grep/src/plugin')(on, config);
-    },
-    baseUrl: 'https://ecommerce-playground.lambdatest.io',
+
+      const tenant = config.env.tenant
+      config.env = require(`./cypress/config/${tenant}.config.json`);
+      config.baseUrl = config.env.baseUrl;
+      return config;
+    }
   }
 });
