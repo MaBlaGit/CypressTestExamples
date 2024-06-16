@@ -7,7 +7,7 @@ import { SuccessPage } from '@root/cypress/support/pages/success.page';
 import { products } from '@root/cypress/fixtures/test-data/products.data';
 
 
-describe('Search and buy products as authorized user', { tags: '@regression' }, () => {
+describe('Search and buy products as authorized user', { tags: '@smoke' }, () => {
     const shopNow = 'SHOP NOW';
     const searchedProduct = 'HTC Touch HD';
     const productAction = 'Add to Cart';
