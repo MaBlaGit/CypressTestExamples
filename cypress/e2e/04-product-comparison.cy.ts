@@ -2,7 +2,7 @@ import { MainPage } from '@root/cypress/support/pages/main.page';
 import { ProductsPage } from '@root/cypress/support/pages/products.page';
 import { ProductComparisonPage } from '@root/cypress/support/pages/product-comparison.page';
 
-describe('Compare products test', { tags: '@regression' }, () => {
+describe('Compare products test', { tags: '@smoke' }, () => {
 
   let mainPage:MainPage;
   let productsPage: ProductsPage;

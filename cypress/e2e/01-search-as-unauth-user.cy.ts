@@ -6,7 +6,7 @@ import { ShoppingCartPage } from '@root/cypress/support/pages/shopping-cart.page
 import { SuccessPage } from '@root/cypress/support/pages/success.page';
 import { userBillingData } from '@root/cypress/fixtures/test-data/user-billing.data';
 
-describe('Search products tests', { tags: '@regression' },  () => {
+describe('Search products tests', { tags: '@smoke' },  () => {
 
   let confirmOrderPage: ConfirmOrderPage;
   let checkoutPage: CheckoutPage;

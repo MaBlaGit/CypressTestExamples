@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "cy:all": "npx cypress run --browser chrome --env tenant=production",
-    "cy:regression": "npx cypress run --env tenant=production,grepTags=@regression"
+    "cy:smoke": "npx cypress run --env tenant=production,grepTags=@smoke"
   },
   "author": "",
   "license": "ISC",
