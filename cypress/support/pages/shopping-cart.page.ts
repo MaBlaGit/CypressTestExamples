@@ -36,9 +36,11 @@ export class ShoppingCartPage extends BasePage {
     }
 
     clickOnRemoveAllCartProducts() {
-        this.removeProductsButton.each(button => {
-            cy.wrap(button).click();
-        })
+        this.removeProductsButton.each(_ => {
+            cy.intercept('GET', '**/index.php?route=checkout/cart').as('cartProducts');
+            this.removeProductsButton.first().click();
+            cy.wait('@cartProducts').its('response.statusCode').should('equal', 200); 
+        });
     }
 
     getProductQuantityByName(productName: string) {

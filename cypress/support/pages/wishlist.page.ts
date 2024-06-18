@@ -27,8 +27,10 @@ export class WishlistPage extends BasePage {
     }
 
     removeAllElementsFromWishlist(){
-        this.deleteButton.each(removeButton => {
-            cy.wrap(removeButton).click();
+        this.deleteButton.each( _ => {
+            cy.intercept('GET', '**/index.php?route=account/wishlist').as('wishlist');
+            this.deleteButton.first().click();
+            cy.wait('@wishlist').its('response.statusCode').should('equal', 200);
         });
     }
 }
