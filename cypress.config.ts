@@ -13,7 +13,7 @@ module.exports = defineConfig({
     setupNodeEvents(on, config) {
       require('@cypress/grep/src/plugin')(on, config);
 
-      const tenant = config.env.tenant
+      const tenant = config.env.tenant ? 'localhost' : 'production';
       config.env = require(`./cypress/config/${tenant}.config.json`);
       config.baseUrl = config.env.baseUrl;
       return config;
