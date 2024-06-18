@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "cy:all": "npx cypress run --browser chrome --env tenant=production",
-    "cy:smoke": "npx cypress run --env tenant=production,grepTags=@smoke"
+    "cy:all": "npx cypress run --browser chrome",
+    "cy:smoke": "npx cypress run --env grepTags=@smoke"
   },
   "author": "",
   "license": "ISC",
