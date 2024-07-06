@@ -4,6 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "cy:open:local": "npx cypress open --env tenant=localhost",
+    "cy:open:prod": "npx cypress open",
+    "cy:local": "npx cypress run --browser chrome --env tenant=localhost",
     "cy:all": "npx cypress run --browser chrome",
     "cy:smoke": "npx cypress run --env grepTags=@smoke"
   },
