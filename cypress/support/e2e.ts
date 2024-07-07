@@ -14,10 +14,14 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import './commands'
-import 'cypress-real-events';
+// import "./commands";
+import "cypress-real-events";
+
+import { userLogin } from "@root/cypress/support/commands/logUser.command";
+
+Cypress.Commands.add("userLogin", userLogin);
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
-const registerCypressGrep = require('@cypress/grep');
+const registerCypressGrep = require("@cypress/grep");
 registerCypressGrep();
