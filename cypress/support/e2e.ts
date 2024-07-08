@@ -14,10 +14,20 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import './commands'
-import 'cypress-real-events';
+// import "./commands";
+import "cypress-real-events";
+
+import { userLogin } from "@root/cypress/support/commands/logUser.command";
+import { countCartProducts } from "@root/cypress/support/commands/countCartProducts.command";
+import { deleteAllProducts } from "@root/cypress/support/commands/deleteAllProducts.command";
+import { removeAllWishlist } from "@root/cypress/support/commands/removeAllWishlist.command";
+
+Cypress.Commands.add("userLogin", userLogin);
+Cypress.Commands.add("countCartProducts", countCartProducts);
+Cypress.Commands.add("deleteAllProducts", deleteAllProducts);
+Cypress.Commands.add("removeAllWishlist", removeAllWishlist);
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
-const registerCypressGrep = require('@cypress/grep');
+const registerCypressGrep = require("@cypress/grep");
 registerCypressGrep();
