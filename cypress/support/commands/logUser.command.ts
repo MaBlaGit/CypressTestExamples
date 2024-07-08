@@ -10,11 +10,8 @@ declare global {
 
 const loginPage = new LoginPage();
 
-export const userLogin = function (
-  userEmail: string,
-  password: string
-): Cypress.Chainable<any> {
-  return cy.session(
+export const userLogin = function (userEmail: string, password: string) {
+  cy.session(
     [userEmail, password],
     () => {
       loginPage.navigateTo();
