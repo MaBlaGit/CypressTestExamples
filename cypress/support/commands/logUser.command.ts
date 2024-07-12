@@ -21,6 +21,7 @@ export const userLogin = function (userEmail: string, password: string) {
       validate: () => {
         cy.getCookie("OCSESSID").should("not.be.empty");
       },
+      cacheAcrossSpecs: true,
     }
   );
 };
